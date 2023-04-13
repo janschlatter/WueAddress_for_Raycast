@@ -1,6 +1,6 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
-  "name": "wueaddress",
+  "name": "wueadress",
   "title": "WueAddress For Würzburg University",
   "description": "Contact Search for Julius-Maximilians-Universität Würzburg (JMU).",
   "icon": "wue.png",
@@ -13,7 +13,7 @@
   "commands": [
     {
       "name": "index",
-      "title": "Search WueAdress",
+      "title": "Search WueAddress",
       "subtitle": "Search for Contact",
       "description": "Displaying contact details for JMU Personnel",
       "mode": "view"
