@@ -1,8 +1,8 @@
-import { ActionPanel, Action, List } from "@raycast/api";
+import { ActionPanel, Action, Icon, List } from "@raycast/api";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import * as cheerio from "cheerio";
-import { wueIconData } from "./imageData";
+import { wueIconData, wueIconDataDark } from "./imageData";
 
 interface SearchResult {
   title: string;
@@ -52,7 +52,6 @@ export default function Command() {
       isLoading={isLoading}
       onSearchTextChange={setSearchQuery}
       searchBarPlaceholder="Search for a contact..."
-      navigationTitle="WueAddress"
       isShowingDetail={searchQuery !== ""}
     >
       {error && (
@@ -62,7 +61,7 @@ export default function Command() {
       )}
 
       {!isLoading && searchQuery === "" && (!searchResults || searchResults.length === 0) ? (
-        <List.EmptyView icon={{ source: wueIconData }} title="Type something to get started" />
+        <List.EmptyView icon={{ source: { light: wueIconData, dark: wueIconDataDark} }} title="Type something to get started" />
       ) : (
         searchResults?.map((result, index) => (
           <List.Item
@@ -72,7 +71,7 @@ export default function Command() {
             actions={
               <ActionPanel>
                 {result.emails.map((email) => (
-                  <Action.Open key={email} icon="AtSymbol" title={`Write Email`} target={`mailto:${email}`} />
+                  <Action.Open key={email} icon={Icon.Pencil} title={`Write Email`} target={`mailto:${email}`} />
                 ))}
               </ActionPanel>
             }
