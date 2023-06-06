@@ -70,10 +70,18 @@ export default function Command() {
             subtitle={result.workplaces.join(", ")}
             actions={
               <ActionPanel>
-                {result.emails.map((email) => (
-                  <Action.Open key={email} icon={Icon.Pencil} title={`Write Email`} target={`mailto:${email}`} />
-                ))}
-              </ActionPanel>
+              {result.emails.map((email) => (
+                <Action.Open key={email} icon={Icon.Pencil} title={`Write Email`} target={`mailto:${email}`} />
+              ))}
+              {result.phones.map((phone, phoneIndex) => (
+                <Action.CopyToClipboard
+                  key={`phone_${phoneIndex}`}
+                  title="Copy Phone Number"
+                  content={phone}
+                  icon={Icon.Clipboard}
+                />
+              ))}
+            </ActionPanel>
             }
             detail={
               <List.Item.Detail
